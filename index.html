@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Institucional - makitas shop</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background: linear-gradient(135deg, #004d00 60%, #000000 100%);
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: #000;
+      box-shadow: 0 2px 8px rgba(0, 255, 0, 0.2);
+      padding: 0.5rem 1rem;
+    }
+    .navbar-brand {
+      color: #0f0 !important;
+      font-weight: bold;
+      font-size: 1.6rem;
+    }
+    .nav-link {
+      color: #0f0 !important;
+      margin-right: 1rem;
+    }
+    .nav-link:hover {
+      color: #8f8 !important;
+    }
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1050;
+    }
+    .sobre-section {
+      color: #0f0;
+      background: rgba(0, 0, 0, 0.6);
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 800px;
+    }
+    .products-section h2 {
+      color: #0f0;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #000;
+      color: #0f0;
+      border: none;
+      box-shadow: 0 4px 16px rgba(0, 255, 0, 0.3);
+    }
+    .card-title {
+      color: #0f0;
+    }
+    .badge-price {
+      background-color: #0f0;
+      color: #000;
+      font-size: 1rem;
+    }
+    .btn-buy {
+      background-color: #0f0;
+      color: #000;
+      border: none;
+    }
+    .btn-buy:hover {
+      background-color: #0b0;
+      color: #fff;
+    }
+
+    [data-bs-theme="dark"] body {
+      background: #000;
+    }
+    [data-bs-theme="dark"] .navbar {
+      background: #111;
+    }
+    [data-bs-theme="dark"] .nav-link {
+      color: #8f8 !important;
+    }
+    [data-bs-theme="dark"] .sobre-section {
+      background: #111;
+      color: #8f8;
+    }
+    [data-bs-theme="dark"] .products-section h2 {
+      color: #8f8;
+    }
+    [data-bs-theme="dark"] .card {
+      background: #111;
+      color: #8f8;
+      box-shadow: 0 4px 16px rgba(0, 255, 0, 0.6);
+    }
+    [data-bs-theme="dark"] .badge-price {
+      background-color: #8f8;
+      color: #000;
+    }
+    [data-bs-theme="dark"] .btn-buy {
+      background-color: #070;
+      color: #fff;
+    }
+    [data-bs-theme="dark"] .btn-buy:hover {
+      background-color: #050;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      color: #fff;
+      background: #000;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">makitas shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon text-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <button id="darkModeToggle" class="btn btn-outline-light dark-mode-toggle">
+    <i id="toggleIcon" class="bi bi-moon"></i> Modo Escuro
+  </button>
+
+  <div class="container sobre-section">
+    <h2>Sobre a makitas shop</h2>
+    <p>
+      Na <strong>makitas shop</strong>, somos apaixonados por oferecer o que há de melhor em ferramentas Makita para atender profissionais exigentes e entusiastas. Nosso foco é qualidade, confiança e suporte técnico especializado.
+    </p>
+    <p>
+      Com anos de atuação no mercado de construção e manutenção, nossa equipe está preparada para atender suas necessidades com rapidez e personalização. Trabalhamos com os principais combos Makita, garantindo peças originais e assistência pós-venda.
+    </p>
+    <p>
+      Aqui, você encontra desde kits compactos até conjuntos avançados para marcenaria, eletricistas, soldadores e empreiteiros que exigem desempenho máximo em campo.
+    </p>
+  </div>
+
+
+  <footer>&copy; 2025 makitas shop. Todos os direitos reservados.</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const html = document.documentElement;
+    const btn = document.getElementById('darkModeToggle');
+
+    const getStored = () => localStorage.getItem('theme');
+    const getPref = () =>
+      getStored() ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light');
+
+    function applyTheme(theme) {
+      html.setAttribute('data-bs-theme', theme);
+      btn.innerHTML = theme === 'dark'
+        ? '<i class="bi bi-sun"></i> Modo Claro'
+        : '<i class="bi bi-moon"></i> Modo Escuro';
+      localStorage.setItem('theme', theme);
+    }
+
+    applyTheme(getPref());
+
+    btn.addEventListener('click', () => {
+      const curr = html.getAttribute('data-bs-theme');
+      applyTheme(curr === 'dark' ? 'light' : 'dark');
+    });
+
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => {
+        if (!getStored()) applyTheme(e.matches ? 'dark' : 'light');
+      });
+  </script>
+</body>
+</html>

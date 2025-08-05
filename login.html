@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NovaCommerce</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0d1f0f 60%, #000000 100%);
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: #f8f8f8;
+        }
+
+        .navbar {
+            background: #0d1f0f !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            padding: 4px 18px;
+        }
+
+        .navbar-brand {
+            color: #00ff88 !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+            vertical-align: middle;
+            object-fit: contain;
+        }
+
+        .navbar-nav > li > a {
+            color: #00ff88 !important;
+            font-size: 1.1rem;
+            margin-right: 18px;
+        }
+
+        .navbar-nav > li.active > a,
+        .navbar-nav > li > a:hover {
+            color: #66ffaa !important;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #101010;
+            padding: 30px 25px 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 255, 136, 0.15);
+        }
+
+        .login-container h2 {
+            margin-bottom: 25px;
+            color: #00ff88;
+        }
+
+        .form-control {
+            background: #1b1b1b;
+            border: 1px solid #00ff88;
+            color: #ffffff;
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .form-text {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .btn-primary {
+            background-color: #0d1f0f;
+            border-color: #00ff88;
+            color: #00ff88;
+        }
+
+        .btn-primary:hover {
+            background-color: #00ff88;
+            color: #000;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-success,
+        .btn-danger {
+            border: none;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #006127;
+        }
+
+        .btn-danger {
+            background-color: #004d3c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #0a0a0a;
+            color: #00ff88;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Dark mode toggle */
+        .dark-mode {
+            background: linear-gradient(135deg, #000000 60%, #003322 100%);
+            color: #f1f1f1;
+        }
+
+        .dark-mode .login-container {
+            background: #1a1a1a;
+        }
+
+        .dark-mode .navbar {
+            background: #000 !important;
+        }
+
+        .dark-mode .navbar-brand,
+        .dark-mode .navbar-nav > li > a {
+            color: #00ff88 !important;
+        }
+
+        .dark-mode footer {
+            background: #111;
+            color: #00ff88;
+        }
+
+        .dark-mode .form-control {
+            background: #222;
+            color: #00ff88;
+            border-color: #00ff88;
+        }
+
+        .dark-mode .btn-primary {
+            background-color: #003322;
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <img src="imagens/martelin de ouro.png" class="navbar-brand-icon" alt="Logo">
+            <a class="navbar-brand" href="index.html">makitas shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">Preços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-2">
+        <div class="d-flex justify-content-end">
+            <button id="toggleDarkMode" class="btn btn-outline-success">Modo Escuro</button>
+        </div>
+    </div>
+
+    <main>
+        <div class="login-container">
+            <h2 class="text-center">Entrar</h2>
+            <form>
+                <div class="form-group mb-3">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Digite seu email">
+                    <div id="emailHelp" class="form-text">Nunca compartilharemos seu email.</div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="exampleInputPassword1">Senha</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha">
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Concordo com os termos</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <a href="#" class="btn btn-danger btn-block">Voltar</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="redefinir senha.html" class="btn btn-success btn-block">Esqueci minha senha</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Makitas Shop - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('toggleDarkMode');
+        toggleBtn.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = 'Modo Claro';
+            } else {
+                toggleBtn.textContent = 'Modo Escuro';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Redefinir Senha</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #004d00 0%, #000000 100%);
+      min-height: 100vh;
+    }
+    .redefinir-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #000;
+      color: #0f0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 255, 0, 0.2);
+      padding: 32px;
+    }
+    .form-label {
+      font-weight: 500;
+      color: #0f0 !important;
+    }
+    .btn-primary {
+      background-color: #0f0;
+      border-color: #0f0;
+      color: #000;
+    }
+    .btn-primary:hover {
+      background-color: #0b0;
+    }
+  
+    [data-bs-theme="dark"] body {
+      background: #000;
+    }
+    [data-bs-theme="dark"] .redefinir-container {
+      background: #111;
+      color: #8f8;
+      box-shadow: 0 2px 8px rgba(0, 255, 0, 0.4);
+    }
+    [data-bs-theme="dark"] .form-label {
+      color: #8f8 !important;
+    }
+    [data-bs-theme="dark"] .btn-primary {
+      background-color: #0b0;
+      border-color: #0b0;
+      color: #fff;
+    }
+    [data-bs-theme="dark"] .btn-primary:hover {
+      background-color: #070;
+    }
+  </style>
+</head>
+<body>
+  <div class="redefinir-container">
+    <h2 class="mb-4 text-center">Redefinir Senha</h2>
+    <form>
+      <div class="mb-3">
+        <label for="email" class="form-label">E‑mail</label>
+        <input type="email" class="form-control" id="email" placeholder="Digite seu e‑mail" required>
+      </div>
+      <div class="mb-3">
+        <label for="novaSenha" class="form-label">Nova Senha</label>
+        <input type="password" class="form-control" id="novaSenha" placeholder="Digite a nova senha" required>
+      </div>
+      <div class="mb-3">
+        <label for="confirmarSenha" class="form-label">Confirmar Nova Senha</label>
+        <input type="password" class="form-control" id="confirmarSenha" placeholder="Confirme a nova senha" required>
+      </div>
+      <button type="button" class="btn btn-primary w-100" onclick="window.location.href='redefinida.html'">
+        Redefinir
+      </button>
+    </form>
+  </div>
+
+  <button id="darkModeBtn" class="btn btn-secondary position-fixed" style="top: 20px; right: 20px; z-index:1050;">
+    Modo Escuro
+  </button>
+
+  <footer class="text-center mt-5 mb-3 text-white">
+    &copy; 2025 makitas shop, Todos os direitos reservados.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const root = document.documentElement;
+    const btn = document.getElementById('darkModeBtn');
+
+    function setTheme(theme) {
+      root.setAttribute('data-bs-theme', theme);
+      btn.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Escuro';
+      localStorage.setItem('theme', theme);
+    }
+
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+    btn.addEventListener('click', () => {
+      const current = root.getAttribute('data-bs-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
+</body>
+</html>
